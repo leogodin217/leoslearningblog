@@ -13,7 +13,7 @@ class App extends Component {
     super();
 
     this.addDefaultBlogs = this.addDefaultBlogs.bind(this);
-
+    this.addBlog = this.addBlog.bind(this);
     this.state = {
       blogs: [] 
     };
@@ -21,9 +21,24 @@ class App extends Component {
 
   addDefaultBlogs(event) {
     event.preventDefault();
-    const blogs = {...this.state.blogs};  
+    const blogs = {...this.state.blogs};
     this.setState({
       blogs: Blogs.blogs
+    });
+  }
+
+  addBlog(blog) {
+    event.preventDefault();
+    // Get the current state
+    const blogs = this.state.blogs;
+
+    // Add the blog
+    blog.id = Math.random();    
+    blogs.push(blog);
+
+    // Set the state
+    this.setState({
+      blogs: blogs
     });
   }
 
@@ -33,7 +48,7 @@ class App extends Component {
       <div className="App">
         <div className="App-header dark-primary-color">
           <h2>Leo's Learning Blog</h2>
-        <BlogForm addDefaultBlogs={this.addDefaultBlogs} />
+        <BlogForm addDefaultBlogs={this.addDefaultBlogs} addBlog={this.addBlog} />
         </div>
         <div className="content">
           <BlogList blogs={this.state.blogs} />
