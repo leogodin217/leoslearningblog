@@ -1,0 +1,8 @@
+10/25/2016: Use HTML5 tags for appropriate content 
+10/25/2016: Add routable categories
+10/25/2016: Add tags
+10/25/2016: Add comments 
+10/25/2016: Hookup firebase for persistance. With authentication.
+10/25/2016: Add blog form
+10/25/2016: DONE(10/25/2016) - Use App state to store blogs
+10/25/2016: DONE(10/25/2016) - use module.exports instead of creating a full function to return default blogs

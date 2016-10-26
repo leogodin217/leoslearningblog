@@ -4,6 +4,7 @@ class BlogList extends React.Component {
 	render() {
 
 		const blogs = this.props.blogs;
+		console.log(blogs);
 		return (
 			<div className="blog-list dark-primary-color">
 				<ul className="blog-list">
