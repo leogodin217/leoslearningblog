@@ -4,16 +4,16 @@ class BlogList extends React.Component {
 	render() {
 
 		const blogs = this.props.blogs;
-		console.log(blogs);
+		const blogKeys = Object.keys(blogs);
 		return (
 			<div className="blog-list dark-primary-color">
 				<ul className="blog-list">
-					{blogs.map( blog => {
+					{blogKeys.map( key => {
 						return (
-						 	<li key={blog.id} className="light-primary-color" >
-						 		<div className="blog-title">{blog.title}</div><br />
+						 	<li key={key} className="light-primary-color" >
+						 		<div className="blog-title">{blogs[key].title}</div><br />
 						 		<div className="blog-content">{
-						 			blog.content.split("</p>").map(paragraph => {
+						 			blogs[key].content.split("</p>").map(paragraph => {
 						 				return <p key={Math.random()}>{paragraph}</p>;
 						 			})
 						 		}</div>
