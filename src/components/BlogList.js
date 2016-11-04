@@ -27,4 +27,8 @@ class BlogList extends React.Component {
 	}
 }
 
+BlogList.PropTypes = {
+	blogs: React.PropTypes.object.isRequired,
+};
+
 export default BlogList;

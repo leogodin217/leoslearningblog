@@ -1,6 +1,13 @@
 import React from 'react';
 
+
+
 class BlogForm extends React.Component {
+
+	constructor() {
+		super();
+		this.createBlog = this.createBlog.bind(this);
+	}
 
 	createBlog(event) {
 		event.preventDefault();
@@ -14,7 +21,10 @@ class BlogForm extends React.Component {
 		this.blogForm.reset();
 
 	}
+
+
 	render() {
+
 		return (
 			<div className="add-blog">
 				<form className="blog-form" ref={(input) => this.blogForm = input}
@@ -29,6 +39,10 @@ class BlogForm extends React.Component {
 			</div>
 			)
 	}	
+}
+
+BlogForm.PropTypes = {
+	addBlog: React.PropTypes.func.isRequired,
 }
 
 export default BlogForm;

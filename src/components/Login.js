@@ -7,6 +7,13 @@ class Login extends React.Component {
 		super();
 		this.authenticate = this.authenticate.bind(this);
 		this.authHandler = this.authHandler.bind(this);
+		this.logout = this.logout.bind(this);
+	}
+
+	componentDidMount() {
+		base.onAuth((user) => {
+			this.authHandler(null, { user });
+		});
 	}
 
 	authenticate() {
@@ -22,15 +29,39 @@ class Login extends React.Component {
 		}
 
 		// Pass the uid up as current user
-		this.props.setCurrentUser(authData.user.uid); 
+		if (authData.user) {
+			this.props.setCurrentUser(authData.user.uid); 
+	  }
+	}
 
+	logout() {
+		base.unauth();
+		this.props.setCurrentUser(null);
 	}
 
 	render() {
+		let clickHandler = {};
+		let message = null;
+
+		if (this.props.currentUser) {
+			// We are logged in. 
+			clickHandler = this.logout;
+			message = 'Logout';
+		} else {
+			// We are not logged in
+			clickHandler = this.authenticate;
+			message = 'Login with Facebook';
+		}
+
 		return (
-			<button onClick={this.authenticate}>Login With Facebook</button>
+			<button onClick={clickHandler}>{message}</button>
 		)
 	}
 }
+
+Login.PropTypes = {
+	currentUser: React.PropTypes.string.isRequired,
+	setCurrentUser: React.PropTypes.func.isRequired,
+};
 
 export default Login;
