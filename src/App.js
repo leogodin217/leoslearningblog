@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { Link } from 'react-router';
 import './App.css';
 
 import BlogList from './components/BlogList';
@@ -61,6 +61,7 @@ class App extends Component {
       <div className="App">
         <div className="App-header dark-primary-color">
           <h2>Leo's Learning Blog</h2>
+          <Link to="/admin">Admin</Link>
           <Login setCurrentUser={this.setCurrentUser} 
             currentUser={this.state.currentUser}/>
         </div>
