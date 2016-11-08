@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
+
 import './App.css';
 
-import BlogList from './components/BlogList';
+import BlogListContainer from './components/BlogListContainer';
 // import BlogForm from './components/BlogForm';
 import Login from './components/Login';
 import Blogs from './content/Blogs.js';
@@ -66,7 +67,7 @@ class App extends Component {
             currentUser={this.state.currentUser}/>
         </div>
         <div className="content">
-          <BlogList blogs={this.state.blogs} />
+          <BlogListContainer />
         </div>
       </div>
     );

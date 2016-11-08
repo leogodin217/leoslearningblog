@@ -1,4 +1,5 @@
 import React from 'react';
+import RaisedButton from 'material-ui/RaisedButton';
 
 import base from '../base';
 
@@ -29,6 +30,7 @@ class Login extends React.Component {
 		}
 
 		// Pass the uid up as current user
+		// If we are not authenticated, then do nothing
 		if (authData.user) {
 			this.props.setCurrentUser(authData.user.uid); 
 	  }
@@ -54,7 +56,9 @@ class Login extends React.Component {
 		}
 
 		return (
-			<button onClick={clickHandler}>{message}</button>
+			<div>
+			<RaisedButton label={message} onClick={clickHandler} />
+			</div>
 		)
 	}
 }

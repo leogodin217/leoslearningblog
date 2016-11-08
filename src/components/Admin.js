@@ -46,7 +46,7 @@ class Admin extends React.Component {
 
     // Add the blog
     const id = uuid.v1();
-    const postDate = Date();
+    const postDate = new Date().getTime();
     blog.postDate = postDate;
     blogs[id] = blog;
 

@@ -1,25 +1,38 @@
 import React from 'react';
+import {Card, CardTitle, CardText } from 'material-ui/Card';
+
 
 class BlogList extends React.Component {
 	render() {
 
-		const blogs = this.props.blogs;
-		const blogKeys = Object.keys(blogs);
-		return (
-			<div className="blog-list dark-primary-color">
-				<ul className="blog-list">
-					{blogKeys.map( key => {
-						return (
-						 	<li key={key} className="light-primary-color" >
-						 		<div className="blog-title">{blogs[key].title}</div><br />
-						 		<div className="blog-content">{
-						 			blogs[key].content.split("</p>").map(paragraph => {
-						 				return <p key={Math.random()}>{paragraph}</p>;
-						 			})
-						 		}</div>
-						 	</li>
-						 )
+		const styles = {
+			root: {
+				display: 'flex',
+				flexWrap: 'wrap',
+				justifyContent: 'space-around',
+			},
+			gridList: {
+				width: 500,
+				height: 450,
+				overflowY: 'auto',
+			},
+		};
 
+
+		return (
+			<div style={styles.root}>
+				<ul>
+					{this.props.blogPosts.map((tile) => {
+						return (
+						<li key={tile.id}>
+						<Card >
+							<CardTitle 
+								title={tile.title} 
+								subtitle={new Date(tile.postDate).toString()} />
+							<CardText >{tile.content}</CardText>
+						</Card>
+						</li>
+						)
 					})}
 				</ul>
 			</div>
@@ -28,7 +41,7 @@ class BlogList extends React.Component {
 }
 
 BlogList.PropTypes = {
-	blogs: React.PropTypes.object.isRequired,
+	blogs: React.PropTypes.array.isRequired,
 };
 
 export default BlogList;
